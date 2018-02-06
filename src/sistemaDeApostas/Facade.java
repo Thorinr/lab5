@@ -21,6 +21,10 @@ public class Facade {
 	public int cadastrarCenario(String descricao) {
 		return controle.cadastrarCenario(descricao);
 	}
+	
+	public int cadastrarCenario(String descricao, int bonus){
+		return controle.cadastrarCenario(descricao, bonus);
+	}
 
 	public String exibirCenario(int cenario) {
 		return controle.exibirCenario(cenario);
@@ -34,9 +38,26 @@ public class Facade {
 		controle.cadastrarAposta(cenario, apostador, valor, previsao);;
 	}
 	
+	public int cadastarApostaSeguraValor(int cenario, String apostador, int valor,String previsao, int seguro,int custo) {
+		return controle.cadastrarApostaSeguraValor(cenario, apostador, valor, previsao, seguro, custo);
+	}
+	
+	public int cadastarAṕostaSeguraTaxa(int cenario, String apostador, int valor, String previsao, double taxa int custo) {
+		return controle.cadastrarApostaSeguraTaxa(cenario, apostador, valor, previsao, taxa, custo);	
+	}
+	
+	public int alterarSeguroValor(int cenario, int apostaAssegurada, int valor) {
+		return controle.alterarSeguroValor(cenario, apostaAssegurada, valor);
+	}
+	
+	public alterarSeguroTaxa(int cenario, int apostaAssegurada, double taxa) {
+		return controle.alterarSeguroTaxa(cenario, apostaAssegurada, taxa);
+	}
+	
 	public int valorTotalDeApostas(int cenario) {
 		return controle.valorTotalDeApostas(cenario);
 	}
+	
 	
 	public int totalDeApostas(int cenario) {
 		return controle.totalDeApostas(cenario);

@@ -9,7 +9,7 @@ public class Cenario {
 	private String estado;
 	private HashSet <Aposta> conjuntoDeApostas;
 	private int valorTotal;
-	private double premiototal;
+	private double premioTotal;
 	
 	public Cenario (int numeracao, String descricao) {
 		if (descricao.equals("")) {
@@ -28,6 +28,10 @@ public class Cenario {
 		return this.numeracao + " - " + this.descricao + " - " + this.estado;
 	}
 
+	public String getEstado() {
+		return estado;
+	}
+
 	public int getNumeracao() {
 		return numeracao;
 	}
@@ -41,12 +45,29 @@ public class Cenario {
 		this.conjuntoDeApostas.add(new Aposta(apostador, valor, previsao));
 	}
 	
+	public int cadastrarApostaSeguraValor(String apostador, int valor, String previsao, int seguro, int id) {
+		this.valorTotal += valor;
+		this.conjuntoDeApostas.add(new ApostaAsseguradaValor(apostador, valor, previsao, seguro, id));
+		return id;
+	}
+	
+	public int cadastrarApostaSeguraTaxa(String apostador, int valor, String previsao, double taxa, int id) {
+		this.valorTotal += valor;
+		this.conjuntoDeApostas.add(new ApostaAsseguradaTaxa(apostador, valor, previsao, taxa, id));
+		return id;
+	}
+	
 	public int getValorTotal() {
 		return valorTotal;
 	}
 	
 	public int getNumeroDeApostas() {
 		return conjuntoDeApostas.size();
+	}
+	
+
+	public double getPremioTotal() {
+		return this.premioTotal;
 	}
 	
 	public String exibeApostas() {
@@ -91,7 +112,7 @@ public class Cenario {
 		}
 		
 		double valorCaixa = (dinheiroArrecadado * taxa) ;
-		this.premiototal = (dinheiroArrecadado - valorCaixa) ;
+		this.premioTotal = (dinheiroArrecadado - valorCaixa) ;
 		return (int) Math.floor(valorCaixa);
 	}
 	
@@ -100,7 +121,37 @@ public class Cenario {
 			throw new IllegalArgumentException("Erro na consulta do total de rateio do cenario: Cenario ainda esta aberto");
 		}
 		
-		return (int) Math.floor(this.premiototal);
+		return (int) Math.floor(this.premioTotal);
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((conjuntoDeApostas == null) ? 0 : conjuntoDeApostas.hashCode());
+		result = prime * result + numeracao;
+		return result;
+	}
+	
+	
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Cenario other = (Cenario) obj;
+		if (conjuntoDeApostas == null) {
+			if (other.conjuntoDeApostas != null)
+				return false;
+		} else if (!conjuntoDeApostas.equals(other.conjuntoDeApostas))
+			return false;
+		if (numeracao != other.numeracao)
+			return false;
+		return true;
 	}
 	
 	

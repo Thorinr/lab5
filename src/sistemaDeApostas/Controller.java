@@ -29,6 +29,14 @@ public class Controller {
 	public int cadastrarCenario(String descricao) {
 		return listaDeCenarios.cadastrarCenario(descricao);
 	}
+	
+	public int cadastrarCenario(String descricao, int bonus) {
+		if(bonus > caixa) {
+			throw new IllegalArgumentException("Erro no cadastro de cenario: bônus é maior que o caixa");
+		}
+		this.caixa -= bonus;
+		return listaDeCenarios.cadastrarCenario(descricao, bonus);
+	}
 
 	public String exibirCenario(int cenario) {
 		return listaDeCenarios.exibirCenario(cenario);
@@ -40,6 +48,16 @@ public class Controller {
 	
 	public void cadastrarAposta(int cenario, String apostador, int valor, String previsao) {
 		listaDeCenarios.cadastrarAposta(cenario, apostador, valor, previsao);
+	}
+	
+	public int cadastrarApostaSeguraValor(int cenario, String apostador, int valor, String previsao, int seguro, int custo) {
+		this.caixa += custo;
+		return listaDeCenarios.cadastrarApostaSeguraValor(cenario, apostador, valor, previsao,seguro);
+	}
+	
+	public int cadastrarApostaSeguraTaxa(int cenario, String apostador, int valor, String previsao, double taxa, int custo) {
+		this.caixa += custo;
+		return listaDeCenarios.cadastrarApostaSeguraTaxa(cenario, apostador, valor, previsao,taxa);
 	}
 	
 	public int valorTotalDeApostas(int cenario) {

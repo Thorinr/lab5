@@ -33,6 +33,10 @@ public class Aposta {
 		return this.valor;
 	}
 	
+	public String getNome() {
+		return this.nome;
+	}
+	
 	@Override
 	public String toString() {
 		return this.nome + " - " + this.valor + " - " + this.previsao; 
