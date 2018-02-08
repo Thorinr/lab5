@@ -3,7 +3,6 @@ package sistemaDeApostas;
 public class ApostaAsseguradaValor extends Aposta{
 	
 	private int seguro;
-	private int id;
 	
 	public ApostaAsseguradaValor (String nome, int valor, String previsao, int seguro, int id) {
 		super(nome, valor, previsao);
@@ -12,8 +11,8 @@ public class ApostaAsseguradaValor extends Aposta{
 		
 	}
 	
-	public int getId() {
-		return this.id;
+	public double seguro() {
+		return seguro;
 	}
 	
 	@Override

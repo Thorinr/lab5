@@ -3,7 +3,6 @@ package sistemaDeApostas;
 public class ApostaAsseguradaTaxa extends Aposta {
 	
 	private double taxa;
-	private int id;
 	
 	public ApostaAsseguradaTaxa(String nome, int valor, String previsao, double taxa, int id) {
 		super(nome, valor, previsao);
@@ -12,9 +11,10 @@ public class ApostaAsseguradaTaxa extends Aposta {
 		
 	}
 	
-	public int getId() {
-		return this.id;
+	public double seguro() {
+		return this.getValor() * taxa;
 	}
+	
 	
 	@Override
 	public String toString() {

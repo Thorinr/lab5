@@ -5,6 +5,7 @@ public class Aposta {
 	private String nome;
 	private int valor;
 	private String previsao;
+	protected int id;
 	
 	public Aposta(String nome, int valor, String previsao) {
 		if (nome.equals("") || nome.equals(null) || nome.equals("  ")) {
@@ -23,6 +24,7 @@ public class Aposta {
 		this.nome = nome;
 		this.valor = valor;
 		this.previsao = previsao;
+		this.id = 0;
 	}
 	
 	public String getPrevisao() {
@@ -35,6 +37,10 @@ public class Aposta {
 	
 	public String getNome() {
 		return this.nome;
+	}
+	
+	public int getId() {
+		return id;
 	}
 	
 	@Override

@@ -10,6 +10,7 @@ public class Cenario {
 	private HashSet <Aposta> conjuntoDeApostas;
 	private int valorTotal;
 	private double premioTotal;
+	private double custoSeguro;
 	
 	public Cenario (int numeracao, String descricao) {
 		if (descricao.equals("")) {
@@ -21,6 +22,7 @@ public class Cenario {
 		this.conjuntoDeApostas = new HashSet <Aposta> ();
 		this.estado = "Nao finalizado";
 		this.valorTotal = 0;
+		this.custoSeguro = 0;
 	}
 	
 	@Override
@@ -108,6 +110,10 @@ public class Cenario {
 		for (Aposta aposta : conjuntoDeApostas) {
 			if (!aposta.getPrevisao().equals(ganhador)) {
 				dinheiroArrecadado += aposta.getValor();
+				if(aposta.getId() != 0) {
+					this.custoSeguro += aposta.seguro();
+				}
+				
 			}
 		}
 		
