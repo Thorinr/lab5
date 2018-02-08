@@ -43,6 +43,10 @@ public class Aposta {
 		return id;
 	}
 	
+	public double seguro() {
+		return 0;
+	}
+	
 	@Override
 	public String toString() {
 		return this.nome + " - " + this.valor + " - " + this.previsao; 

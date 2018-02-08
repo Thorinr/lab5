@@ -5,11 +5,9 @@ import java.util.ArrayList;
 public class ListaDeCenarios {
 
 	private ArrayList <Cenario> cenarios;
-	private  int id;
 	
 	public ListaDeCenarios() {
 		this.cenarios = new ArrayList <Cenario> ();
-		this.id = 0;
 	}
 	
 	public int cadastrarCenario(String descricao) {
@@ -62,8 +60,7 @@ public class ListaDeCenarios {
 		if (cenario > this.cenarios.size()) {
 			throw new IllegalArgumentException("Erro no cadastro de aposta: Cenario nao cadastrado");
 		}
-		this.id += 1;
-		return this.cenarios.get(cenario - 1).cadastrarApostaSeguraValor(apostador, valor, previsao, seguro, id);
+		return this.cenarios.get(cenario - 1).cadastrarApostaSeguraValor(apostador, valor, previsao, seguro);
 	}
 	
 	public int cadastrarApostaSeguraTaxa(int cenario, String apostador, int valor, String previsao, double taxa) {
@@ -74,8 +71,15 @@ public class ListaDeCenarios {
 			throw new IllegalArgumentException("Erro no cadastro de aposta: Cenario nao cadastrado");
 		}
 		
-		this.id += 1;
-		return this.cenarios.get(cenario - 1).cadastrarApostaSeguraTaxa(apostador, valor, previsao, taxa, id);
+		return this.cenarios.get(cenario - 1).cadastrarApostaSeguraTaxa(apostador, valor, previsao, taxa);
+	}
+	
+	public int alterarSeguroValor(int cenario, int apostaAssegurada, int valor) {
+		return this.cenarios.get(cenario - 1).alterarSeguroValor(apostaAssegurada, valor);
+	}
+	
+	public int alterarSeguroTaxa(int cenario, int apostaAssegurada, double  taxa) {
+		return this.cenarios.get(cenario - 1).alterarSeguroTaxa(apostaAssegurada, taxa);
 	}
 	
 	public int valorTotalDeApostas(int cenario) {

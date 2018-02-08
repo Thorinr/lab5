@@ -11,6 +11,7 @@ public class ApostaAsseguradaValor extends Aposta{
 		
 	}
 	
+	@Override
 	public double seguro() {
 		return seguro;
 	}

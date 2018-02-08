@@ -6,6 +6,9 @@ public class CenarioComBonus extends Cenario {
 	
 	public CenarioComBonus(int numeracao, String descricao, int bonus) {
 		super(numeracao, descricao);
+		if (bonus <= 0) {
+			throw new IllegalArgumentException("Erro no cadastro de cenario: Bonus invalido");
+		}
 		this.bonus = bonus;
 	
 	}
@@ -20,7 +23,7 @@ public class CenarioComBonus extends Cenario {
 
 	@Override
 	public String toString() {
-		return this.getNumeracao() + " - " + this.getDescricao() + " - " + this.getEstado() + " -  R$ " + this.bonus;
+		return this.getNumeracao() + " - " + this.getDescricao() + " - " + this.getEstado() + " - R$ " + String.format("%.2f", new Double(this.bonus/100));
 	}
 	
 	@Override

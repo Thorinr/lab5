@@ -38,11 +38,11 @@ public class Facade {
 		controle.cadastrarAposta(cenario, apostador, valor, previsao);;
 	}
 	
-	public int cadastarApostaSeguraValor(int cenario, String apostador, int valor,String previsao, int seguro,int custo) {
+	public int cadastrarApostaSeguraValor(int cenario, String apostador, int valor,String previsao, int seguro,int custo) {
 		return controle.cadastrarApostaSeguraValor(cenario, apostador, valor, previsao, seguro, custo);
 	}
 	
-	public int cadastarAṕostaSeguraTaxa(int cenario, String apostador, int valor, String previsao, double taxa int custo) {
+	public int cadastrarApostaSeguraTaxa(int cenario, String apostador, int valor, String previsao, double taxa, int custo) {
 		return controle.cadastrarApostaSeguraTaxa(cenario, apostador, valor, previsao, taxa, custo);	
 	}
 	
@@ -50,7 +50,7 @@ public class Facade {
 		return controle.alterarSeguroValor(cenario, apostaAssegurada, valor);
 	}
 	
-	public alterarSeguroTaxa(int cenario, int apostaAssegurada, double taxa) {
+	public int alterarSeguroTaxa(int cenario, int apostaAssegurada, double taxa) {
 		return controle.alterarSeguroTaxa(cenario, apostaAssegurada, taxa);
 	}
 	
@@ -80,7 +80,7 @@ public class Facade {
 	}
 	
 	public static void main(String[] args) {
-		args = new String[] {"sistemaDeApostas.Facade", "acceptance_test/us1_test.txt", "acceptance_test/us2_test.txt", "acceptance_test/us3_test.txt" , "acceptance_test/us4_test.txt"};
+		args = new String[] {"sistemaDeApostas.Facade", "acceptance_test/us1_test.txt", "acceptance_test/us2_test.txt", "acceptance_test/us3_test.txt" , "acceptance_test/us4_test.txt", "acceptance_test/us5_test.txt", "acceptance_test/us6_test.txt"};
 		EasyAccept.main(args);
 	}
 	

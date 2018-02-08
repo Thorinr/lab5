@@ -60,6 +60,14 @@ public class Controller {
 		return listaDeCenarios.cadastrarApostaSeguraTaxa(cenario, apostador, valor, previsao,taxa);
 	}
 	
+	public int alterarSeguroValor(int cenario, int apostaAssegurada, int valor) {
+		return listaDeCenarios.alterarSeguroValor(cenario, apostaAssegurada, valor);
+	}
+	
+	public int alterarSeguroTaxa(int cenario, int apostaAssegurada, double taxa) {
+		return listaDeCenarios.alterarSeguroTaxa(cenario, apostaAssegurada, taxa);
+	}
+	
 	public int valorTotalDeApostas(int cenario) {
 		return listaDeCenarios.valorTotalDeApostas(cenario);
 	}

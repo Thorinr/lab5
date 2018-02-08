@@ -11,6 +11,7 @@ public class ApostaAsseguradaTaxa extends Aposta {
 		
 	}
 	
+	@Override
 	public double seguro() {
 		return this.getValor() * taxa;
 	}
