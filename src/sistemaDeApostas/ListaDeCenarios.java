@@ -55,20 +55,20 @@ public class ListaDeCenarios {
 	
 	public int cadastrarApostaSeguraValor(int cenario, String apostador, int valor, String previsao, int seguro) {
 		if (cenario < 1) {
-			throw new IllegalArgumentException("Erro no cadastro de aposta: Cenario invalido");
+			throw new IllegalArgumentException("Erro no cadastro de aposta assegurada por valor: Cenario invalido");
 		}
 		if (cenario > this.cenarios.size()) {
-			throw new IllegalArgumentException("Erro no cadastro de aposta: Cenario nao cadastrado");
+			throw new IllegalArgumentException("Erro no cadastro de aposta assegurada por valor: Cenario nao cadastrado");
 		}
 		return this.cenarios.get(cenario - 1).cadastrarApostaSeguraValor(apostador, valor, previsao, seguro);
 	}
 	
 	public int cadastrarApostaSeguraTaxa(int cenario, String apostador, int valor, String previsao, double taxa) {
 		if (cenario < 1) {
-			throw new IllegalArgumentException("Erro no cadastro de aposta: Cenario invalido");
+			throw new IllegalArgumentException("Erro no cadastro de aposta assegurada por taxa: Cenario invalido");
 		}
 		if (cenario > this.cenarios.size()) {
-			throw new IllegalArgumentException("Erro no cadastro de aposta: Cenario nao cadastrado");
+			throw new IllegalArgumentException("Erro no cadastro de aposta assegurada por taxa: Cenario nao cadastrado");
 		}
 		
 		return this.cenarios.get(cenario - 1).cadastrarApostaSeguraTaxa(apostador, valor, previsao, taxa);
@@ -127,6 +127,11 @@ public class ListaDeCenarios {
 		}
 		
 		return this.cenarios.get(cenario - 1).valorCaixa(taxa);
+	}
+	
+	public int getCustoSeguro(int cenario) {
+		
+		return this.cenarios.get(cenario -1).getCustoSeguro();
 	}
 	
 	public int getTotalRateioCenario(int cenario) {

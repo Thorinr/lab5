@@ -5,8 +5,12 @@ public class Aposta {
 	private String nome;
 	private int valor;
 	private String previsao;
-	protected int id;
+	private int id;
 	
+	public Aposta() {
+		
+	}
+
 	public Aposta(String nome, int valor, String previsao) {
 		if (nome.equals("") || nome.equals(null) || nome.equals("  ")) {
 			throw new IllegalArgumentException("Erro no cadastro de aposta: Apostador nao pode ser vazio ou nulo");
@@ -44,6 +48,26 @@ public class Aposta {
 	}
 	
 	public double seguro() {
+		return 0;
+	}
+	
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public void setValor(int valor) {
+		this.valor = valor;
+	}
+
+	public void setPrevisao(String previsao) {
+		this.previsao = previsao;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public int getSeguro() {
 		return 0;
 	}
 	

@@ -86,7 +86,7 @@ public class Controller {
 	
 	public int getCaixaCenario(int cenario) {
 		int retorno = listaDeCenarios.getCaixaCenario(cenario, this.taxa);
-		this.caixa += retorno;
+		this.caixa += retorno - listaDeCenarios.getCustoSeguro(cenario);
 		return retorno;
 	}
 	

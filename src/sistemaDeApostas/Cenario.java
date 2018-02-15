@@ -10,7 +10,7 @@ public class Cenario {
 	private HashSet <Aposta> conjuntoDeApostas;
 	private int valorTotal;
 	private double premioTotal;
-	private double custoSeguro;
+	private int custoSeguro;
 	private int id;
 	
 	public Cenario (int numeracao, String descricao) {
@@ -65,12 +65,7 @@ public class Cenario {
 	
 	public int alterarSeguroValor(int apostaAssegurada, int valor) {
 		this.id += 1;
-		Aposta apostaModificada = new Aposta(descricao, valor, descricao);
-		for (Aposta aposta : conjuntoDeApostas) {
-			if(aposta.getId() == apostaAssegurada) {
-				apostaModificada = aposta;
-			}
-		}
+		Aposta apostaModificada = getApostaAssegurada(apostaAssegurada);
 		this.conjuntoDeApostas.add(new ApostaAsseguradaValor(apostaModificada.getNome(), apostaModificada.getValor(), apostaModificada.getPrevisao(), valor, id));
 		this.conjuntoDeApostas.remove(apostaModificada);
 		return id;
@@ -78,14 +73,19 @@ public class Cenario {
 	
 	public int alterarSeguroTaxa(int apostaAssegurada, double taxa) {
 		this.id += 1;
-		Aposta apostaModificada = new Aposta(descricao, valor, descricao);
+		Aposta apostaModificada = getApostaAssegurada(apostaAssegurada);
+		this.conjuntoDeApostas.add(new ApostaAsseguradaTaxa(apostaModificada.getNome(), apostaModificada.getValor(), apostaModificada.getPrevisao(), taxa, id));
+		this.conjuntoDeApostas.remove(apostaModificada);
+		return id;
+	}
+	
+	public Aposta getApostaAssegurada(int id) {
 		for (Aposta aposta : conjuntoDeApostas) {
-			if(aposta.getId() == apostaAssegurada) {
-				
+			if(aposta.getId() == id) {
+				return aposta;
 			}
 		}
-		this.conjuntoDeApostas.add(new ApostaAsseguradaTaxa(apostaModificada.getNome(), apostaModificada.getValor(), apostaModificada.getPrevisao(), taxa, id));
-		return id;
+		return null;
 	}
 	
 	public int getValorTotal() {
@@ -140,15 +140,14 @@ public class Cenario {
 			if (!aposta.getPrevisao().equals(ganhador)) {
 				dinheiroArrecadado += aposta.getValor();
 				if(aposta.getId() != 0) {
-					this.custoSeguro += aposta.seguro();
+					this.custoSeguro += aposta.getSeguro();
 				}
-				
 			}
 		}
 		
-		double valorCaixa = (dinheiroArrecadado * taxa) ;
+		double valorCaixa = Math.floor(dinheiroArrecadado * taxa) ;
 		this.premioTotal = (dinheiroArrecadado - valorCaixa) ;
-		return (int) Math.floor(valorCaixa - this.custoSeguro);
+		return (int) valorCaixa;
 	}
 	
 	public int retornaPremio() {
@@ -157,6 +156,11 @@ public class Cenario {
 		}
 		
 		return (int) Math.floor(this.premioTotal);
+	}
+	
+	public int getCustoSeguro(){
+		
+		return custoSeguro;
 	}
 
 	@Override
