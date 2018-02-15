@@ -1,13 +1,18 @@
 package sistemaDeApostas;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class ListaDeCenarios {
 
 	private ArrayList <Cenario> cenarios;
+	private ArrayList <Comparator> comparadores;
 	
 	public ListaDeCenarios() {
 		this.cenarios = new ArrayList <Cenario> ();
+		this.comparadores = new ArrayList <Comparator> ();
+		comparadores.add(new)
 	}
 	
 	public int cadastrarCenario(String descricao) {
@@ -103,7 +108,7 @@ public class ListaDeCenarios {
 		return this.cenarios.get(cenario - 1).getNumeroDeApostas();
 	}
 	
-	public String exibeApostas(int cenario) {
+	public String exibeApostas(int cenario) {list
 		return this.cenarios.get(cenario - 1).exibeApostas();
 	}
 	
@@ -126,7 +131,7 @@ public class ListaDeCenarios {
 			throw new IllegalArgumentException("Erro na consulta do caixa do cenario: Cenario nao cadastrado");
 		}
 		
-		return this.cenarios.get(cenario - 1).valorCaixa(taxa);
+		return this.cenarios.get(ceimplements Collectionsnario - 1).valorCaixa(taxa);
 	}
 	
 	public int getCustoSeguro(int cenario) {
@@ -143,6 +148,9 @@ public class ListaDeCenarios {
 		}
 		
 		return this.cenarios.get(cenario - 1).retornaPremio();
+	}
+	public void alterarOrdem(String ordem) {
+		Collections.sort(cenarios, );
 	}
 
 }
