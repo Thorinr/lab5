@@ -23,7 +23,7 @@ public class CenarioComBonus extends Cenario {
 
 	@Override
 	public String toString() {
-		return this.getNumeracao() + " - " + this.getDescricao() + " - " + this.getEstado() + " - R$ " + String.format("%.2f", new Double(this.bonus/100));
+		return this.getDescricao() + " - " + this.getEstado() + " - R$ " + String.format("%.2f", new Double(this.bonus/100));
 	}
 	
 	@Override

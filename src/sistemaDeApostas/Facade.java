@@ -79,6 +79,14 @@ public class Facade {
 		return controle.getTotalRateioCenario(cenario);
 	}
 	
+	public void alterarOrdem(String ordem) {
+		controle.alterarOrdem(ordem);
+	}
+	
+	public String exibirCenarioOrdenado(int cenario) {
+		return controle.exibirCenarioOrdenado(cenario);
+	}
+	
 	public static void main(String[] args) {
 		args = new String[] {"sistemaDeApostas.Facade", "acceptance_test/us1_test.txt", "acceptance_test/us2_test.txt", "acceptance_test/us3_test.txt" , "acceptance_test/us4_test.txt", "acceptance_test/us5_test.txt", "acceptance_test/us6_test.txt"};
 		EasyAccept.main(args);

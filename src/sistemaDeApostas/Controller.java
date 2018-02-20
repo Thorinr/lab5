@@ -94,4 +94,12 @@ public class Controller {
 		return listaDeCenarios.getTotalRateioCenario(cenario);
 	}
 	
+	public void alterarOrdem(String ordem) {
+		listaDeCenarios.alterarOrdem(ordem);
+	}
+	
+	public String exibirCenarioOrdenado(int cenario) {
+		return listaDeCenarios.exibirCenarioOrdenado(cenario);
+	}
+	
 }

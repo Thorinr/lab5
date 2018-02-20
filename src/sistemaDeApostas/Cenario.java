@@ -29,7 +29,7 @@ public class Cenario {
 	
 	@Override
 	public String toString() {
-		return this.numeracao + " - " + this.descricao + " - " + this.estado;
+		return this.descricao + " - " + this.estado;
 	}
 
 	public String getEstado() {
@@ -120,7 +120,6 @@ public class Cenario {
 			this.estado = "Finalizado (n ocorreu)";
 		}
 	}
-	
 	public int valorCaixa(double taxa) {
 		if (this.estado.equals("Nao finalizado")) {
 			throw new IllegalArgumentException("Erro na consulta do caixa do cenario: Cenario ainda esta aberto");

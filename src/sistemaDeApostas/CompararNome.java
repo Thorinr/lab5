@@ -2,18 +2,14 @@ package sistemaDeApostas;
 
 import java.util.Comparator;
 
-public class CompararNome implements Comparator {
+public class CompararNome implements Comparator <Cenario> {
 
-	
-	
-	public CompararNome () {
-		
-	}
+	private int compare;
 	
 	@Override
-	public int compare(Object o1, Object o2) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int compare(Cenario o1, Cenario o2) {
+		compare = o1.getDescricao().compareTo(o2.getDescricao());
+		return compare;
 	}
 
 }

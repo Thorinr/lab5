@@ -7,12 +7,9 @@ import java.util.Comparator;
 public class ListaDeCenarios {
 
 	private ArrayList <Cenario> cenarios;
-	private ArrayList <Comparator> comparadores;
 	
 	public ListaDeCenarios() {
 		this.cenarios = new ArrayList <Cenario> ();
-		this.comparadores = new ArrayList <Comparator> ();
-		comparadores.add(new)
 	}
 	
 	public int cadastrarCenario(String descricao) {
@@ -35,13 +32,15 @@ public class ListaDeCenarios {
 			throw new IllegalArgumentException("Erro na consulta de cenario: Cenario nao cadastrado");
 		}
 		
-		return cenarios.get(cenario - 1).toString();
+		return cenario + " - " + cenarios.get(cenario - 1).toString();
 	}
 	
 	public String exibirCenarios() {
 		String retorno = "";
+		int contador = 0;
 		for (Cenario cenario : this.cenarios ) {
-			retorno += cenario.toString() + "\n";
+			contador += 1;
+			retorno += contador + " - " + cenario.toString() + "\n";
 		}
 		
 		return retorno;
@@ -108,7 +107,7 @@ public class ListaDeCenarios {
 		return this.cenarios.get(cenario - 1).getNumeroDeApostas();
 	}
 	
-	public String exibeApostas(int cenario) {list
+	public String exibeApostas(int cenario) {
 		return this.cenarios.get(cenario - 1).exibeApostas();
 	}
 	
@@ -131,7 +130,7 @@ public class ListaDeCenarios {
 			throw new IllegalArgumentException("Erro na consulta do caixa do cenario: Cenario nao cadastrado");
 		}
 		
-		return this.cenarios.get(ceimplements Collectionsnario - 1).valorCaixa(taxa);
+		return this.cenarios.get(cenario - 1).valorCaixa(taxa);
 	}
 	
 	public int getCustoSeguro(int cenario) {
@@ -150,7 +149,22 @@ public class ListaDeCenarios {
 		return this.cenarios.get(cenario - 1).retornaPremio();
 	}
 	public void alterarOrdem(String ordem) {
-		Collections.sort(cenarios, );
+		if (ordem.equals("Nome")) {
+			CompararNome comparaNome = new CompararNome();
+			Collections.sort(cenarios, comparaNome);
+		}
+		else if(ordem.equals("Apostas")) {
+			CompararApostas comparaApostas = new CompararApostas();
+			Collections.sort(cenarios, comparaApostas);
+		}
+		else if(ordem.equals("Cadastro")){
+			CompararCadastro comparaCadastro = new CompararCadastro();
+			Collections.sort(cenarios, comparaCadastro);;
+		}
+	}
+	
+	public String exibirCenarioOrdenado(int cenario) {
+		return cenario + " - " + this.cenarios.get(cenario - 1).toString();
 	}
 
 }
